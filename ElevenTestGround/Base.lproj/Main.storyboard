@@ -37,20 +37,130 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jungle" translatesAutoresizingMaskIntoConstraints="NO" id="vXX-Ld-Vss" userLabel="Photo Image View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ax6-94-vIb" userLabel="Comments View">
+                                <rect key="frame" x="0.0" y="597" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEL-ne-QRp">
+                                        <rect key="frame" x="138" y="22" width="100" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-l8-xRx" userLabel="Comments Header Label">
+                                        <rect key="frame" x="117" y="30" width="141.5" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-M2-83Z" userLabel="Comments Stack View">
+                                        <rect key="frame" x="30" y="105" width="315" height="253.5"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Very nice photo!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37C-iI-4ed">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="21.5"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice indeed, I'd love to be there..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OG-GL-Ulz">
+                                                <rect key="frame" x="0.0" y="41.5" width="315" height="21.5"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMX-yv-peF">
+                                                <rect key="frame" x="0.0" y="83" width="315" height="86"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <string key="text">Yep, while we're at it I must say this photo has been probably taken somewhere in the Amazon jungle which is going to extinct soon!!!!</string>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What a bunch of gibberish - it makes no sense at all. This is just a random comment. Random comment. Peace." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fd-AE-Mjw">
+                                                <rect key="frame" x="0.0" y="189" width="315" height="64.5"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.96999999999999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="TEL-ne-QRp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ax6-94-vIb" secondAttribute="leading" constant="20" id="3wu-ZY-A5N"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TEL-ne-QRp" secondAttribute="trailing" constant="20" id="G7m-bI-cie"/>
+                                    <constraint firstItem="K8p-M2-83Z" firstAttribute="leading" secondItem="ax6-94-vIb" secondAttribute="leading" constant="30" id="JtY-aB-lJh"/>
+                                    <constraint firstItem="TEL-ne-QRp" firstAttribute="centerX" secondItem="ax6-94-vIb" secondAttribute="centerX" id="Oe7-iK-m0X"/>
+                                    <constraint firstAttribute="trailing" secondItem="K8p-M2-83Z" secondAttribute="trailing" constant="30" id="UB2-yL-0ze"/>
+                                    <constraint firstItem="MkZ-l8-xRx" firstAttribute="centerX" secondItem="ax6-94-vIb" secondAttribute="centerX" id="ZPB-aG-dEk"/>
+                                    <constraint firstItem="TEL-ne-QRp" firstAttribute="top" secondItem="ax6-94-vIb" secondAttribute="top" constant="22" id="ltn-Sc-ram"/>
+                                    <constraint firstItem="K8p-M2-83Z" firstAttribute="top" secondItem="MkZ-l8-xRx" secondAttribute="bottom" constant="40" id="wdk-6E-rsm"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MkZ-l8-xRx" secondAttribute="trailing" constant="20" id="yRj-rl-ahE"/>
+                                    <constraint firstItem="MkZ-l8-xRx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ax6-94-vIb" secondAttribute="leading" constant="20" id="z3E-hg-9Zl"/>
+                                    <constraint firstItem="MkZ-l8-xRx" firstAttribute="top" secondItem="ax6-94-vIb" secondAttribute="top" constant="30" id="zh6-uS-gc9"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Zpe-fS-ESL" appends="YES" id="W09-6R-pGZ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="vXX-Ld-Vss" firstAttribute="bottom" secondItem="ax6-94-vIb" secondAttribute="top" priority="999" constant="70" id="Iw8-2g-Efv"/>
+                            <constraint firstItem="ax6-94-vIb" firstAttribute="top" secondItem="vXX-Ld-Vss" secondAttribute="top" id="NAk-b3-M5W"/>
+                            <constraint firstItem="ax6-94-vIb" firstAttribute="trailing" secondItem="vXX-Ld-Vss" secondAttribute="trailing" id="W75-Sl-qOt"/>
+                            <constraint firstItem="ax6-94-vIb" firstAttribute="height" secondItem="vXX-Ld-Vss" secondAttribute="height" id="c5W-TI-y6a"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="vXX-Ld-Vss" secondAttribute="trailing" id="d6C-fF-snh"/>
+                            <constraint firstItem="ax6-94-vIb" firstAttribute="leading" secondItem="vXX-Ld-Vss" secondAttribute="leading" id="iAo-7L-qLP"/>
                             <constraint firstItem="vXX-Ld-Vss" firstAttribute="bottom" secondItem="svH-Pt-448" secondAttribute="bottom" id="oon-yV-u0h"/>
                             <constraint firstItem="vXX-Ld-Vss" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="pHI-nD-pgN"/>
                             <constraint firstItem="vXX-Ld-Vss" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="rFR-ii-RoR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NAk-b3-M5W"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="commentsActionLabel" destination="TEL-ne-QRp" id="qqt-Pl-6So"/>
+                        <outlet property="commentsHeaderLabel" destination="MkZ-l8-xRx" id="sER-Rs-dQu"/>
+                        <outlet property="expandedConstraint" destination="NAk-b3-M5W" id="HP6-KL-PIv"/>
+                        <outlet property="tapGestureRecognizer" destination="Zpe-fS-ESL" id="Qo4-X7-DpU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Zpe-fS-ESL">
+                    <connections>
+                        <action selector="tappedCommentsSection:" destination="JEX-9P-axG" id="Rmq-hf-q7A"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="709" y="129"/>
         </scene>
