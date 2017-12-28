@@ -154,9 +154,9 @@
                         <outlet property="commentsHeaderLabel" destination="MkZ-l8-xRx" id="sER-Rs-dQu"/>
                         <outlet property="commentsView" destination="ax6-94-vIb" id="m4r-4Y-NcW"/>
                         <outlet property="expandedConstraint" destination="NAk-b3-M5W" id="HP6-KL-PIv"/>
-                        <outlet property="panGestureRecognizer" destination="0xO-4s-sqW" id="D1N-v4-Md1"/>
+                        <outlet property="panGestureRecognizer" destination="0xO-4s-sqW" id="6TB-SI-481"/>
                         <outlet property="photoImageView" destination="vXX-Ld-Vss" id="BgD-IR-8fO"/>
-                        <outlet property="tapGestureRecognizer" destination="Zpe-fS-ESL" id="Qo4-X7-DpU"/>
+                        <outlet property="tapGestureRecognizer" destination="Zpe-fS-ESL" id="Jll-1M-ZrD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
