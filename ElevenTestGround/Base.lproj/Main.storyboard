@@ -37,6 +37,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jungle" translatesAutoresizingMaskIntoConstraints="NO" id="vXX-Ld-Vss" userLabel="Photo Image View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Is-Fax" userLabel="Blur View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RZ3-Ci-z6f">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ax6-94-vIb" userLabel="Comments View">
                                 <rect key="frame" x="0.0" y="597" width="375" height="603"/>
                                 <subviews>
@@ -130,9 +138,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="68J-Is-Fax" firstAttribute="top" secondItem="vXX-Ld-Vss" secondAttribute="top" id="AOB-hN-M5Y"/>
                             <constraint firstItem="vXX-Ld-Vss" firstAttribute="bottom" secondItem="ax6-94-vIb" secondAttribute="top" priority="999" constant="70" id="Iw8-2g-Efv"/>
                             <constraint firstItem="ax6-94-vIb" firstAttribute="top" secondItem="vXX-Ld-Vss" secondAttribute="top" id="NAk-b3-M5W"/>
+                            <constraint firstItem="68J-Is-Fax" firstAttribute="trailing" secondItem="vXX-Ld-Vss" secondAttribute="trailing" id="QoV-za-FGl"/>
+                            <constraint firstItem="68J-Is-Fax" firstAttribute="leading" secondItem="vXX-Ld-Vss" secondAttribute="leading" id="Rho-cj-25X"/>
                             <constraint firstItem="ax6-94-vIb" firstAttribute="trailing" secondItem="vXX-Ld-Vss" secondAttribute="trailing" id="W75-Sl-qOt"/>
+                            <constraint firstItem="68J-Is-Fax" firstAttribute="bottom" secondItem="vXX-Ld-Vss" secondAttribute="bottom" id="blk-Ee-WKm"/>
                             <constraint firstItem="ax6-94-vIb" firstAttribute="height" secondItem="vXX-Ld-Vss" secondAttribute="height" id="c5W-TI-y6a"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="vXX-Ld-Vss" secondAttribute="trailing" id="d6C-fF-snh"/>
                             <constraint firstItem="ax6-94-vIb" firstAttribute="leading" secondItem="vXX-Ld-Vss" secondAttribute="leading" id="iAo-7L-qLP"/>
@@ -150,6 +162,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="blurView" destination="68J-Is-Fax" id="V8f-Hz-JEg"/>
                         <outlet property="commentsActionLabel" destination="TEL-ne-QRp" id="qqt-Pl-6So"/>
                         <outlet property="commentsHeaderLabel" destination="MkZ-l8-xRx" id="sER-Rs-dQu"/>
                         <outlet property="commentsView" destination="ax6-94-vIb" id="m4r-4Y-NcW"/>

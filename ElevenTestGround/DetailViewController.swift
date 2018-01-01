@@ -12,6 +12,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var commentsView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var commentsActionLabel: UILabel!
     @IBOutlet weak var commentsHeaderLabel: UILabel!
     
@@ -22,7 +23,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var detailItem: AnyObject? = nil
     
-    let transitionDuration: TimeInterval = 0.5
+    let transitionDuration: TimeInterval = 0.7
     let dampingRatio: CGFloat = 1
     let swipeVelocityThreshold: CGFloat = 200
     let releaseProgressThreshold: CGFloat = 0.3
@@ -48,9 +49,18 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var currentState: State = .Collaped
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.blurView.effect = nil
+        self.blurView.alpha = 1
+    }
+    
     @IBAction func tappedCommentsSection(_ recognizer: UITapGestureRecognizer) {
         guard recognizer.state == UIGestureRecognizerState.recognized else { return }
-        toggleCurrentState()
+        guard currentState == .Collaped || !runningAnimators.isEmpty else { return }
+        
+        currentState.toggle()
         animateOrReverseRunningTransition(state: currentState, duration: transitionDuration)
     }
 
@@ -58,7 +68,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         switch recognizer.state {
         case .began:
             if runningAnimators.isEmpty {
-                toggleCurrentState()
+                currentState.toggle()
             }
             startInteractiveTransition(state: currentState, duration: transitionDuration)
         case .changed:
@@ -77,7 +87,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             continueInteractiveTransition(cancel: cancel)
             if cancel {
-                toggleCurrentState()
+                currentState.toggle()
             }
         default:
             break
@@ -99,6 +109,17 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             self.commentsHeaderLabel.alpha = state == .Expanded ? 1 : 0
         }
         appendAnimator(labelAnimator)
+        
+        let controlPoints = state == .Expanded ?
+            [CGPoint(x: 0.75, y: 0.1), CGPoint(x: 0.9, y: 0.25)] :
+            [CGPoint(x: 0.1, y: 0.75), CGPoint(x: 0.25, y: 0.9)];
+        let blurTiming = UICubicTimingParameters(controlPoint1: controlPoints[0], controlPoint2: controlPoints[1])
+        let blurAnimator = UIViewPropertyAnimator(duration: duration, timingParameters: blurTiming)
+        blurAnimator.addAnimations {
+            self.blurView.effect = state == .Expanded ? UIBlurEffect(style: .dark) : nil
+        }
+        blurAnimator.scrubsLinearly = false
+        appendAnimator(blurAnimator)
     }
     
     func animateOrReverseRunningTransition(state: State, duration: TimeInterval) {
@@ -148,11 +169,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         for animator in runningAnimators {
             animator.isReversed = !animator.isReversed
         }
-    }
-    
-    func toggleCurrentState() {
-        currentState.toggle()
-        tapGestureRecognizer.isEnabled = currentState == .Collaped
     }
 }
 
