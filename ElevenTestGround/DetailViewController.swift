@@ -97,29 +97,65 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     func animateTransitionIfNeeded(state: State, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
         
-        let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) {
+        appendAnimator(createFrameAnimator(state: state, duration: duration))
+        appendAnimator(createBlurAnimator(state: state, duration: duration))
+        for labelAnimator in createLabelAnimators(state: state, duration: duration) {
+            appendAnimator(labelAnimator)
+        }
+    }
+    
+    func createFrameAnimator(state: State, duration: TimeInterval) -> UIViewPropertyAnimator {
+        return UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) {
             self.expandedConstraint.isActive = (state == .Expanded)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }
-        appendAnimator(frameAnimator)
-        
-        let labelAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) {
-            self.commentsActionLabel.alpha = state == .Collaped ? 1 : 0
-            self.commentsHeaderLabel.alpha = state == .Expanded ? 1 : 0
-        }
-        appendAnimator(labelAnimator)
-        
+    }
+    
+    func createBlurAnimator(state: State, duration: TimeInterval) -> UIViewPropertyAnimator {
         let controlPoints = state == .Expanded ?
             [CGPoint(x: 0.75, y: 0.1), CGPoint(x: 0.9, y: 0.25)] :
             [CGPoint(x: 0.1, y: 0.75), CGPoint(x: 0.25, y: 0.9)];
         let blurTiming = UICubicTimingParameters(controlPoint1: controlPoints[0], controlPoint2: controlPoints[1])
+        
         let blurAnimator = UIViewPropertyAnimator(duration: duration, timingParameters: blurTiming)
         blurAnimator.addAnimations {
             self.blurView.effect = state == .Expanded ? UIBlurEffect(style: .dark) : nil
         }
         blurAnimator.scrubsLinearly = false
-        appendAnimator(blurAnimator)
+    
+        return blurAnimator
+    }
+    
+    func createLabelAnimators(state: State, duration: TimeInterval) -> [UIViewPropertyAnimator] {
+        let inLabel: UILabel! = state == .Expanded ? self.commentsHeaderLabel : self.commentsActionLabel
+        let outLabel: UILabel! = state == .Expanded ? self.commentsActionLabel : self.commentsHeaderLabel
+
+        let inAlphaAnimator = UIViewPropertyAnimator(duration: duration, curve: .easeIn) {
+            inLabel.alpha = 1
+        }
+        inAlphaAnimator.scrubsLinearly = false
+        
+        let outAlphaAnimator = UIViewPropertyAnimator(duration: duration, curve: .easeIn) {
+            outLabel.alpha = 0
+        }
+        outAlphaAnimator.scrubsLinearly = false
+        
+        let scale = CGPoint(x: inLabel.frame.width / outLabel.frame.width, y: inLabel.frame.height / outLabel.frame.height)
+        let scaleTransform = CGAffineTransform(scaleX: scale.x, y: scale.y)
+
+        let translation = CGPoint(x: inLabel.center.x - outLabel.center.x, y: inLabel.center.y - outLabel.center.y)
+        let translationTransform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        
+        let transformAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) {
+            inLabel.transform = CGAffineTransform.identity
+            outLabel.transform = scaleTransform.concatenating(translationTransform)
+        }
+        transformAnimator.addCompletion { _ in
+            outLabel.transform = CGAffineTransform.identity
+        }
+        
+        return [inAlphaAnimator, outAlphaAnimator, transformAnimator]
     }
     
     func animateOrReverseRunningTransition(state: State, duration: TimeInterval) {
